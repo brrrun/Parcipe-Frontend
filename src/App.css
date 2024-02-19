@@ -1,0 +1,33 @@
+#root {
+  max-width: 1250px;
+  margin: 0 auto;
+  padding: 2rem;
+  text-align: center;
+}
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color:rgb(76, 203, 148);
+}
+.card {
+  padding: 2em;
+}
+.read-the-docs {
+  color: #888;
+}
+body {
+  margin: 0;
+  padding: 0;
+
+}
+.full-screen {
+  height: 100vh; /* Set height to viewport height */
+  width: 100vw; /* Set width to viewport width */
+}
+
+.mandatory {
+  color: red;
+  font-size: 80%;
+}
+

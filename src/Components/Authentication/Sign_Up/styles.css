@@ -1,0 +1,11 @@
+#signup_error {
+    font-size: 80%;
+    color: red;
+    justify-content: center;
+}
+#already_acc  {
+    font-size: 80%;
+    color: black;
+    margin-top: 0.5em;
+    margin-bottom: 0;
+}
