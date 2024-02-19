@@ -8,7 +8,7 @@ const API_URL = "http://localhost:5005/parcipe"
 
 function Homepage() {
 
-  const [allRecipes, setAllRecipes] = useState();
+  const [allRecipes, setAllRecipes] = useState(); 
 
   useEffect(()=>{
       axios
