@@ -7,7 +7,7 @@ import MyDropzone from './dropzone';
 
 const API_URL = "http://localhost:5005/parcipe"
 
-function Add_Recipe() {
+function Add_Recipe() { 
 
     const navigate = useNavigate();
 
