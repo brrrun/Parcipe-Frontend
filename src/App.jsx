@@ -8,6 +8,7 @@ import My_Recipes from './Components/My_Recipes'
 import One_Recipe from './Components/One_Recipe'
 import Login from './Components/Authentication/Login'
 import Sign_Up from './Components/Authentication/Sign_Up'
+import Profile from './Components/Profile_Page';
 
 function App() {
 
@@ -21,6 +22,7 @@ function App() {
       <Route path="/sign/up" element={<Sign_Up/>}/>
       <Route path="/my/recipes/:_id" element={<My_Recipes/>}/>
       <Route path="/view/recipe/:_id" element={<One_Recipe/>} />
+      <Route path="/profile/:_id" element={<Profile/>}/>
     </Routes>
   </div>
   )

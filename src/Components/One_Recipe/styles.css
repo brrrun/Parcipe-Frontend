@@ -21,6 +21,7 @@
     flex-direction: column;
     box-sizing: border-box;
     overflow: hidden;
+    border-radius: 1em;
 }
 #one_right {
     border: 1px solid black;
@@ -35,6 +36,10 @@
 #one_title {
     border: 1px solid blue;
     box-sizing: border-box;
+    height: 10%;
+    max-height: 10%;
+    width: 100%;
+    max-width: 100%;
 }
 #one_title h2 {
     margin: 0;
@@ -44,18 +49,99 @@
     box-sizing: border-box;
     height: 2em;
 }
+/* Recipe Box */
 #one_box {
     border: 1px solid rgb(34, 74, 60);
     display: flex;
     box-sizing: border-box;
+    height: 90%;
+    max-height: 90%;
+    width: 100%;
+    max-width: 100%;
 }
-            /* Ingredients */
-#one_ingredients {
+#one_box_left {
+    border: 1px solid red;
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    max-width: 40%;
+    height: 100%;
+    margin-right: 0.1em;
+}
+#one_box_right {
+    border: 1px solid salmon;
+    display: flex;
+    align-items: center;
+    width: 60%;
+    max-width: 60%;
+    height: 100%;
+    max-height: 100%;
+    flex-direction: column;
+    margin-left: 0.1em;
+}
+/* Image(s) */
+#one_top_images_container {
+    border: 1px solid yellow;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+    height: 86.5%;
+    max-height: 90%;
+    
+}
+.one_top_images {
+    border: 1px solid black;
+    display: flex;
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
+    overflow-y: hidden;
+    overflow-x: scroll; 
+    box-sizing: border-box;
+    
+}
+.one_top_images img {
+    border: 1px solid rgb(214, 0, 154);
+    max-height: 100%;
+    box-sizing: border-box;
+}
+/* Recipe Settings */
+#one_top_side {
     border: 1px solid blue;
     display: flex;
-    flex: 2;
+    height: 13.5%;
     flex-direction: column;
     box-sizing: border-box;
+}
+#one_cuisine {
+    border: 1px solid blue;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+}
+#one_tags {
+    border: 1px solid blue;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+}
+#one_language {
+    border: 1px solid blue;
+    box-sizing: border-box;
+    width: 100%;
+    max-width: 100%;
+}
+/* Ingredients */
+#one_ingredients {
+    border: 3px solid blue;
+    display: flex;
+    flex: 1;
+    flex-direction: column;
+    box-sizing: border-box;
+    width: 100%;
+    height: 100%;
+    max-height: 100%;
 }
 #one_ingredients h4 {
     margin: 0.2em 0 0 0;
@@ -63,55 +149,40 @@
     justify-content: center;
     box-sizing: border-box;
 }
-            /* Recipe Settings */
+            /* , Ingredients + Instructions */
 #one_recipe {
-    border: 1px solid blue;
     display: flex;
-    flex: 6;
     flex-direction: column;
+    align-items: center;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    width: 100%;
+    max-width: 100%;
+    height: 100%;
+    max-height: 100%;
     box-sizing: border-box;
 }
-            /* Image, Cuisine, Tags, Language */
+#one_recipe h5 {
+    margin-top: 0.3em;
+}
+/* --- Ingredients */
 #one_recipe_top {
-    border: 1px solid blue;
-    display: flex;
-    height: 15em;
-    max-height: 15em;
-    box-sizing: border-box;
-}
-#one_top_image {
-    border: 1px solid blue;
-    display: flex;
-    flex: 4;
-    box-sizing: border-box;
-}
-#one_top_side {
-    border: 1px solid blue;
     display: flex;
     flex-direction: column;
-    flex: 2;
-    height: 15em;
-    max-height: 15em;
-    box-sizing: border-box;
+    align-items: center;
+    width: 100%;
+    padding-bottom: 0.5em;
+    margin-bottom: 1em;
+    box-shadow: 0 0.1em 0.5em 0.0em rgb(181, 223, 205);
+    overflow-wrap: break-word;
 }
-#one_cuisine {
-    border: 1px solid blue;
-    box-sizing: border-box;
-}
-#one_tags {
-    border: 1px solid blue;
-    box-sizing: border-box;
-}
-#one_language {
-    border: 1px solid blue;
-    box-sizing: border-box;
-}
-            /* Instructions */
+/* --- Instructions */
 #one_recipe_bottom {
-    border: 1px solid blue;
-    height: 22.8em;
-    max-height: 21.5em;
-    box-sizing: border-box;
+    overflow-x: hidden;
+    width: 100%;
+    max-width: 100%;
+    height: inherit;
+    overflow-wrap: break-word;
 }
                                 /* RIGHT Side */
 #one_right h4 {

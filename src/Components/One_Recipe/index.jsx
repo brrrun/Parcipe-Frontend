@@ -40,6 +40,7 @@ function One_Recipe() {
             response.data.map((recipe, index)=>{
                 if(recipe._id === _id){
                     setRecipe(recipe)
+                    console.log("recipe:", recipe)
                 } else {
                     otherRecipes.push(recipe)
                 }
@@ -73,16 +74,77 @@ function One_Recipe() {
                 <h2>{recipe? recipe.title : "Loading..."}</h2>
             </div>
 
-            <div
-            id="one_box">
+        <div
+        id="one_box">
 
-                <div    // INGREDIENTS
-                id="one_ingredients">
-                    <div>
-                        <h4>Ingredients</h4>
+            <div    // IMAGE + SETTINGS
+            id="one_box_left">
+
+                <div id="one_top_images_container">
+                    {recipe && recipe.image.length > 0 ? (
+                        <div    // IMAGE
+                        class="one_top_images">
+                        {recipe.image.map((imageObj, index)=>{
+                            
+                            const imageDataURL = `data:image/jpeg;base64,${imageObj}`;
+                            return (
+                                <div key={index}>   
+                                    <img src={imageDataURL} alt="Your image"/>
+                                </div>
+                            );
+                            })}
+                        </div>
+                    ) : ( 
+                        <div class="one_top_images">
+                            <img src="../../../../public/images/01 recipe default.jpg"/> 
+                        </div>
+                    )}
+                </div>
+
+                <div    // CUISINE +TAGS + LANGUAGE
+                    id="one_top_side">
+
+                        <div    // CUISINE 
+                        id="one_cuisine"> 
+                            <p>Cuisine: 
+                                {recipe && recipe.cuisine && recipe.cuisine.length > 0
+                                    ? recipe.cuisine
+                                    : "not specified"}
+                                </p> 
+                        </div> 
+                        <div    // TAGS
+                        id="one_tags">
+                            <p>Tags: 
+                                {recipe && recipe.tags && recipe.tags.length > 0 
+                                ? recipe.tags.map((tag, index)=>(
+                                    <div key={index}>
+                                        {tag}
+                                    </div>
+                                ))
+                                : "not specified"}</p>
+                        </div>
+                        <div    // LANGUAGE
+                        id="one_language">
+                            <p>Language: 
+                                {recipe && recipe.language && recipe.language.length >0
+                                ? recipe.language 
+                                : "not specified"}</p>
+                        </div>
                     </div>
-                    <div>
-                    {recipe?
+            </div>
+
+            <div    // INGREDIENTS + INSTRUCTIONS   
+            id="one_box_right">
+                <div
+                    id="one_recipe">
+    
+                    <div    // INGREDIENTS
+                    id="one_recipe_top">
+                        <div>
+                            <h5>Ingredients</h5>
+                        </div>
+                        <div>
+                        {recipe?
                         recipe.ingredients.map((ingredient, index)=>(
                             <div key={index}>
                                 <div>
@@ -91,54 +153,15 @@ function One_Recipe() {
                             </div>
                         ))  
                         : "Loading..." 
-                    }
-                    </div>
-                </div>
-
-                <div
-                id="one_recipe">
-                    <div
-                    id="one_recipe_top">
-                        
-                        <div    // IMAGE
-                        id="one_top_image">
-                            IMAGE
-                        </div>
-
-                        <div    // CUISINE +TAGS + LANGUAGE
-                        id="one_top_side">
-
-                            <div    // CUISINE 
-                            id="one_cuisine"> 
-                                <p>Cuisine: 
-                                    {recipe && recipe.cuisine && recipe.cuisine.length > 0
-                                        ? recipe.cuisine
-                                        : "not specified"}
-                                    </p> 
-                            </div> 
-                            <div    // TAGS
-                            id="one_tags">
-                                <p>Tags: 
-                                    {recipe && recipe.tags && recipe.tags.length > 0 
-                                    ? recipe.tags.map((tag, index)=>(
-                                        <div key={index}>
-                                            {tag}
-                                        </div>
-                                    ))
-                                    : "not specified"}</p>
-                            </div>
-                            <div    // LANGUAGE
-                            id="one_language">
-                                <p>Language: 
-                                    {recipe && recipe.language && recipe.language.length >0
-                                    ? recipe.language 
-                                    : "not specified"}</p>
-                            </div>
+                        }
                         </div>
                     </div>
-
+            
                     <div    // INSTRUCTIONS
                     id="one_recipe_bottom">
+                        <div>
+                            <h5>Ingredients</h5>
+                        </div>
                         {recipe && recipe.instructions && recipe.instructions.length >0
                         ? recipe.instructions
                         : "Loading..."}
@@ -146,8 +169,11 @@ function One_Recipe() {
 
                 </div>
             </div>
+
             
-        </div>
+    </div>
+    
+</div>
 
         <div        // ---- RIGHT Side (Recipes List)
         id="one_right">

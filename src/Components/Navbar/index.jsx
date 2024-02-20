@@ -33,7 +33,10 @@ function Navbar() {
                 <Link to="/view/recipe/:_id"> ONE </Link>
             </div>
             <div>
-            <Link onClick={logout} to="/">Logout</Link>
+                <Link to={`/profile/${_id}`}> Profile </Link>
+            </div>
+            <div>
+            <   Link onClick={logout} to="/">Logout</Link>
             </div>
 
         </>) : (<>
