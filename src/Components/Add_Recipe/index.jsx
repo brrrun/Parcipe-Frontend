@@ -1,15 +1,20 @@
-import React, { useEffect } from 'react'
+import React, { useEffect, useContext } from 'react'
 import './styles.css'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 import MyDropzone from './dropzone';
+import { AuthContext } from '../../Context/auth.context';
 
 const API_URL = "http://localhost:5005/parcipe"
 
 function Add_Recipe() { 
 
     const navigate = useNavigate();
+    const authContext = useContext(AuthContext);
+    const author = authContext.user.username;
+   // const author = "John"
+    console.log("author:", author)
 
     const [newRecipe, setNewRecipe] = useState({ 
         title: "",
@@ -25,6 +30,7 @@ function Add_Recipe() {
         cuisine: "",
         image: [],
         instructions: "",
+        user: `${author}`,
     });
     
     const [addIngredient, setAddIngredient] = useState({
@@ -93,7 +99,7 @@ function Add_Recipe() {
         .post(`${API_URL}/new`, recipeWithBase64)
         .then(()=>{
             console.log(`Recipe successfully created`)
-            navigate("/all")
+            navigate("/")
         })
         .catch((error)=>{
             console.log(`ERROR: ${error}`)})
