@@ -15,27 +15,25 @@ function My_Recipes() {
 
     useEffect(()=>{
         axios
-        .get(`${API_URL}/recipe/${_id}`) // ERROR: THIS IS SPECIFIC RECIPE ID, NOT BY USER ID
+        .get(`${API_URL}/user/recipes/${_id}`)
         .then((response)=>{
             setMyRecipes(response.data)
-        .catch((error)=>console.log(`Failed to load My recipes: ${error}`))
+            console.log(myRecipes)
         })
+        .catch((error)=>console.log(`Failed to load My recipes: ${error}`))
     }, [])
+
 
   return (
     <div>
-        <div
-        id="my_recipes_main">
-
-        <div    // Page TITLE
-        id="my_recipes_page_title">
+    <div id="my_recipes_main">
+        <div id="my_recipes_page_title">
             <div> 
-                <h4>My Recipies</h4>
+                <h4>My Recipes</h4>
             </div>
         </div>
 
-        <div    // SORT BY
-        id="my_recipes_sort_by">
+        <div id="my_recipes_sort_by">
             <div>
                 <p>Sort By:</p>
             </div>
@@ -43,7 +41,7 @@ function My_Recipes() {
                 <p>Name</p>
             </div>
             <div>
-                <p>Dificulty</p>
+                <p>Difficulty</p>
             </div>
             <div>
                 <p>Time</p>
@@ -53,75 +51,56 @@ function My_Recipes() {
             </div>
         </div>
 
-        <div
-        id="my_recipes_sides">
-
-            <div    // LEFT Side - Recipes Rendering
-            id="my_recipes_left">
-
-                <div    // Recipe NAME + IMAGE
-                id="my_recipes_recipe_left">
-
-                    <div
-                    id="my_recipes_name">
-                        <p>Name</p>
-                    </div>
-
-                    <div
-                    id="my_recipes_image">
-                        <p>Image</p>
-                    </div>
-
-                    <div
-                    id="my_recipes_tags">
-                        <p>Tags</p>
-                    </div>
+        <div id="my_recipes_sides">
+            {myRecipes > 0 && (
+                <div id="my_recipes_left">
+                    {myRecipes.map((recipe, index) => (
+                        <div id="my_recipes_recipe_left" key={index}>
+                            <div id="my_recipes_name">
+                                <p>{recipe.name}</p>
+                            </div>
+                            <div id="my_recipes_image">
+                                <p>{recipe.image}</p>
+                            </div>
+                            <div id="my_recipes_tags">
+                                <p>{recipe.tags}</p>
+                            </div>
+                            {/* Recipe SETTINGS + INSTRUCTIONS */}
+                            <div id="my_recipes_recipe_right">
+                                <div id="my_recipes_recipe_settings">
+                                    <div>
+                                        <p>Time: {recipe.time}</p>
+                                    </div>
+                                    <div>
+                                        <p>Difficulty: {recipe.difficulty}</p>
+                                    </div>
+                                    <div>
+                                        <p>Cuisine: {recipe.cuisine}</p>
+                                    </div>
+                                    <div>
+                                        <p>Language: {recipe.language}</p>
+                                    </div>
+                                </div>
+                                <div id="my_recipes_recipe_instructions">
+                                    <p>Instructions: {recipe.instructions}</p>
+                                </div>
+                            </div>
+                        </div>
+                    ))}
                 </div>
+            )}
+        </div>
 
-            <div    // Recipe SETTINGS + INSTRUCTIONS
-            id="my_recipes_recipe_right">
-
-                <div
-                id="my_recipes_recipe_settings">
-                    <div>
-                        <p>Time</p>
-                    </div>
-                    <div>
-                        <p>Dificulty</p>
-                    </div>
-                    <div>
-                        <p>Cuisine</p>
-                    </div>
-                    <div>
-                        <p>Language</p>
-                    </div>
-                </div>
-
-                <div
-                id="my_recipes_recipe_instructions">
-                    <p>Instructions</p>
-                </div>
-
-            </div>
-                
-
-            </div>
-
-            <div    // RIGHT Side - Recipes LIST
-            >    
-                <div>
-                {myRecipes ?
-                myRecipes.map((titles, index)=>(
+        <div>
+            <div>
+                {myRecipes ? myRecipes.map((titles, index) => (
                     <div key={index}>
                         <p>{titles.title}</p>
                     </div>
                 )) : <p>No Recipes created</p>}
-                </div>
             </div>
-
         </div>
-
-        </div>
+    </div>
     </div>
   )
 }

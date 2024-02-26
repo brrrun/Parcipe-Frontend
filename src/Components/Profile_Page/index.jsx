@@ -1,6 +1,7 @@
 import React, {useContext} from 'react'
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import "./styles.css"
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from '../../Context/auth.context';
 
@@ -19,12 +20,8 @@ useEffect(() => {
     .get(`${API_URL}/profile/${_id}`)
     .then((response) => {
         setProfile(response.data)
-        console.log("response.data:", response.data)
         return response;
     })
-    .then((response)=>{
-        console.log("profile:", response.data.username)
-    })  
     .catch((error) => console.log(error))
 }, [])
 
@@ -33,7 +30,8 @@ useEffect(() => {
     <div>
         <h1>Profile</h1>
 
-        <div>
+        <div 
+        id="profile_data">
             {profile? (
                 <div>
                     <div>
@@ -41,6 +39,15 @@ useEffect(() => {
                     </div>
                     <div>
                         <p>{profile.email}</p>
+                    </div>
+                    <div>
+                        {profile.createdRecipes.map((recipe, index)=>{
+                            return (
+                                <div key={index}>
+                                    <Link><p>{recipe.title}</p></Link>
+                                </div>
+                            )
+                        })}
                     </div>
                 </div>
             ) : (
