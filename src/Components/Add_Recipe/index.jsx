@@ -13,8 +13,10 @@ function Add_Recipe() {
     const navigate = useNavigate();
     const authContext = useContext(AuthContext);
     const author = authContext.user.username;
+    const authorId = authContext.user._id;
    // const author = "John"
     console.log("author:", author)
+    console.log("authorId", authorId)
 
     const [newRecipe, setNewRecipe] = useState({ 
         title: "",
@@ -47,11 +49,8 @@ function Add_Recipe() {
 
             // Converts images to Uint8 and adds them to the newRecipe State
     const updateNewRecipe = (newImageRecipe) => {
-        console.log("FORMDATA2:", newImageRecipe);
-        
         newImageRecipe.forEach(file => {
             const reader = new FileReader();
-            console.log("reader:", reader);
     
             reader.onload = function () {
                 // Convert the file to Uint8Array
@@ -66,7 +65,6 @@ function Add_Recipe() {
             };
             reader.readAsArrayBuffer(file);
         });
-        console.log("newRecipe", newRecipe.image);
     };
     
     const uint8ArrayToBase64 = (uint8Array) => {
@@ -93,7 +91,8 @@ function Add_Recipe() {
         
             const recipeWithBase64 = {
                 ...newRecipe,
-                image: imagesBase64
+                image: imagesBase64,
+                creator: authorId
             };
     axios
         .post(`${API_URL}/new`, recipeWithBase64)

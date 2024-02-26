@@ -14,13 +14,17 @@ const navigate = useNavigate();
 const { _id } = useParams();
 const [profile, setProfile] = useState();
 
-useEffect(() => {
+useEffect(() => { 
     axios
     .get(`${API_URL}/profile/${_id}`)
     .then((response) => {
         setProfile(response.data)
-        console.log("response:", response)
-        console.log("profile:", profile)})
+        console.log("response.data:", response.data)
+        return response;
+    })
+    .then((response)=>{
+        console.log("profile:", response.data.username)
+    })  
     .catch((error) => console.log(error))
 }, [])
 
