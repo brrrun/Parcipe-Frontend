@@ -5,7 +5,6 @@ import axios from 'axios'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 
 const API_URL = "http://localhost:5005/parcipe"
-const URL = "http://localhost:5005"
 
 function One_Recipe() {
 
@@ -35,9 +34,10 @@ function One_Recipe() {
         .get(`${API_URL}/recipes`)
         .then((response) => {
             const otherRecipes = [];
+            const recipes = response.data
                 // Fetches and saves recipe with URL _id within a State
                 // And saves all other recipes within another State
-            response.data.map((recipe, index)=>{
+                recipes.map((recipe, index)=>{
                 if(recipe._id === _id){
                     setRecipe(recipe)
                     console.log("recipe:", recipe)

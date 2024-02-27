@@ -44,7 +44,7 @@ useEffect(() => {
                         {profile.createdRecipes.map((recipe, index)=>{
                             return (
                                 <div key={index}>
-                                    <Link><p>{recipe.title}</p></Link>
+                                    <Link to={`/my/recipes/${recipe._id}`}><p>{recipe.title}</p></Link>
                                 </div>
                             )
                         })}

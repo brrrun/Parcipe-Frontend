@@ -1,27 +1,51 @@
 import React from 'react'
 import './styles.css'
-import { useParams, useNavigate } from 'react-router-dom'
-import { useState, useEffect } from 'react'
+import { useParams, useNavigate, Link } from 'react-router-dom'
+import { useState, useEffect, useContext } from 'react'
 import axios from 'axios';
-
+import { AuthContext } from '../../Context/auth.context';
 
 const API_URL = "http://localhost:5005/parcipe"
 
 function My_Recipes() {
 
+    const authContext = useContext(AuthContext);
+    const userId = authContext.user._id;
     const {_id} = useParams();
     
-    const [myRecipes, setMyRecipes] = useState();
+    const [recipe, setRecipe] = useState();
+    const [myRecipes, setMyRecipes] = useState([]);
+    
 
     useEffect(()=>{
         axios
-        .get(`${API_URL}/user/recipes/${_id}`)
+        .get(`${API_URL}/recipe/${_id}`)
         .then((response)=>{
-            setMyRecipes(response.data)
-            console.log(myRecipes)
+            setRecipe(response.data)
+            console.log("response.data:",response.data)
         })
         .catch((error)=>console.log(`Failed to load My recipes: ${error}`))
     }, [])
+
+ 
+    useEffect(()=>{
+        axios
+        .get(`${API_URL}/user/recipes/${userId}`)
+        .then((response)=>{
+            const recipe = response.data;
+            const myOtherRecipes = [];
+            recipe.forEach((recipe)=>{
+                if(recipe._id !== _id){
+                    myOtherRecipes.push(recipe)
+                }
+                else if (recipe._id === _id){
+                    setRecipe(recipe)
+                }
+                setMyRecipes(myOtherRecipes)
+            })
+        })
+        .catch((error)=>console.log(`Failed to load My recipes: ${error}`))
+    }, [_id])
 
 
   return (
@@ -52,52 +76,62 @@ function My_Recipes() {
         </div>
 
         <div id="my_recipes_sides">
-            {myRecipes > 0 && (
-                <div id="my_recipes_left">
-                    {myRecipes.map((recipe, index) => (
-                        <div id="my_recipes_recipe_left" key={index}>
-                            <div id="my_recipes_name">
-                                <p>{recipe.name}</p>
-                            </div>
-                            <div id="my_recipes_image">
-                                <p>{recipe.image}</p>
-                            </div>
-                            <div id="my_recipes_tags">
-                                <p>{recipe.tags}</p>
-                            </div>
-                            {/* Recipe SETTINGS + INSTRUCTIONS */}
-                            <div id="my_recipes_recipe_right">
-                                <div id="my_recipes_recipe_settings">
-                                    <div>
-                                        <p>Time: {recipe.time}</p>
-                                    </div>
-                                    <div>
-                                        <p>Difficulty: {recipe.difficulty}</p>
-                                    </div>
-                                    <div>
-                                        <p>Cuisine: {recipe.cuisine}</p>
-                                    </div>
-                                    <div>
-                                        <p>Language: {recipe.language}</p>
-                                    </div>
-                                </div>
-                                <div id="my_recipes_recipe_instructions">
-                                    <p>Instructions: {recipe.instructions}</p>
-                                </div>
-                            </div>
-                        </div>
-                    ))}
-                </div>
-            )}
-        </div>
-
-        <div>
-            <div>
-                {myRecipes ? myRecipes.map((titles, index) => (
-                    <div key={index}>
-                        <p>{titles.title}</p>
+            <div id="my_recipes_left">
+                {recipe && 
+                <div id="my_recipes_recipe_left" >
+                    <div id="my_recipes_name">
+                        <p>{recipe.title}</p>
                     </div>
-                )) : <p>No Recipes created</p>}
+                    {recipe.image && recipe.image.length > 0 ? (
+                        <div id="my_recipes_image">
+                        {recipe.image.map((imageObj, imageIndex) => {
+                            const imageDataURL = `data:image/jpeg;base64,${imageObj}`;
+                            return (
+                                <div key={imageIndex}>   
+                                    <img src={imageDataURL} alt="Your image" />
+                                </div>
+                                    );
+                                })}
+                            </div>
+                        ) : (
+                            <img src="../../../../public/images/01 recipe default.jpg" />
+                    )}
+                    
+                    <div id="my_recipes_tags">
+                        <p>{recipe.tags}</p>
+                    </div>
+                </div>
+                }
+                
+                    {/* Recipe SETTINGS + INSTRUCTIONS */}
+                <div id="my_recipes_recipe_right">
+                {recipe &&
+                <div id="my_recipes_recipe_settings">
+                    <div>
+                        <p>Time: {recipe.time.hours}:{recipe.time.minutes}</p>
+                    </div>
+                    <div>
+                        <p>Difficulty: {recipe.difficulty}</p>
+                    </div>
+                    <div>
+                        <p>Cuisine: {recipe.cuisine}</p>
+                    </div>
+                    <div>
+                        <p>Language: {recipe.language}</p>
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+            <div id="my_recipes_right">
+                {myRecipes ? (<>
+                    {myRecipes.map((recipe, index) => (
+                    <div key={index}>
+                        <Link to={`/my/recipes/${recipe._id}`}><p>{recipe.title}</p></Link>
+                    </div>
+                ))}
+                </>) : (<>
+                <p>Loading...</p></>)}
             </div>
         </div>
     </div>
