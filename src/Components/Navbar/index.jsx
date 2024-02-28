@@ -33,6 +33,9 @@ function Navbar() {
                 <Link to="/view/recipe/:_id"> ONE </Link>
             </div>
             <div>
+                <Link to="/my/recipe/edit/:_id">EDIT</Link>
+            </div>
+            <div>
                 <Link to={`/profile/${_id}`}> Profile </Link>
             </div>
             <div>

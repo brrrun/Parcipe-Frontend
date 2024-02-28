@@ -174,7 +174,7 @@ function Add_Recipe() {
             </div>         
 
             <div            // Recipe TIME, SERVINGS & DIFFICULTY
-                id="add_recipe_time_servings_dificulty">
+                id="add_recipe_time_servings_difficulty">
 
                 <div           // Recipe TIME
                     id="add_recipe_time">

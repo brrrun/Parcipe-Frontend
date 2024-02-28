@@ -144,7 +144,7 @@
     margin-left: 0.2em;
     background-color: white;
   }
-  #add_recipe_time_servings_dificulty {
+  #add_recipe_time_servings_difficulty {
     border: 1px solid red;
     display: flex;
     justify-content: flex-start;

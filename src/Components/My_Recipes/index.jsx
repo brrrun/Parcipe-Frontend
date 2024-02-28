@@ -49,18 +49,27 @@ function My_Recipes() {
     }, [_id])
 
     const editRecipe = ()=>{
-        navigate("/")
+        navigate(`/my/recipe/edit/${_id}`)
     }
 
     const deleteRecipe = ()=>{
-        axios
-        .delete(`${API_URL}/delete/recipe/${_id}`)
-        .then(()=>{
-            console.log("Recipe deleted!")
-            navigate("/")
-        })
-        .catch((error)=>console.log(error))
+        const isConfirmed = window.confirm("Delete this recipe?");
+        if (isConfirmed){
+            axios
+                .delete(`${API_URL}/delete/recipe/${_id}`)
+                .then(()=>{
+                    console.log("Recipe deleted!")
+                    if (myRecipes.length > 0) {
+                        navigate(`/my/recipes/${myRecipes[0]._id}` || `/my/recipes/${myRecipes[1]._id}`);
+                    } else {
+                        navigate(`/profile/${userId}`);
+                    }
+                    
+                })
+                .catch((error)=>console.log(error))}
+        else {console.log("Deletion canceled")}
     }
+
 
   return (
     <div>
@@ -138,11 +147,19 @@ function My_Recipes() {
                         <p>Difficulty: {recipe.difficulty}</p>
                     </div>
                     <div>
+                        <p>Servings: {recipe.servings}</p>
+                    </div>
+                    <div>
                         <p>Cuisine: {recipe.cuisine}</p>
                     </div>
                     <div>
                         <p>Language: {recipe.language}</p>
                     </div>
+                </div>
+                }
+                {recipe &&
+                <div id="my_recipes_recipe_instructions"> 
+                    <p>{recipe.instructions}</p>
                 </div>
                 }
             </div>
