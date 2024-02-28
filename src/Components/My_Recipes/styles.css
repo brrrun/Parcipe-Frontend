@@ -25,15 +25,50 @@
     max-height: fit-content;
     box-sizing: border-box;
     margin: 0 0 0.2em 0;
+}                               
+#my_recipes_options{
+    border: 1px solid orangered;
+    display: flex;
+    box-sizing: border-box;
+    height: 2em;
+    max-height: 2em;
 }                               /* SORT BY */
 #my_recipes_sort_by {
     border: 1px solid orchid;
     display: flex;
-    justify-content:space-between;
+    justify-content: space-between;
+    flex: 4;
     align-items: center;
     box-sizing: border-box;
     padding-left: 2em;
     padding-right: 35em;
+}
+#my_recipes_edit_delete {
+    border: 1px solid black;
+    display: flex;
+    flex: 1;
+    justify-content: space-between;
+    max-height: 100%;
+}
+#my_recipes_edit {
+    height: 100%;
+    max-height: 100%;
+}
+#my_recipes_edit button {
+    height: 100%;
+    max-height: 100%;
+    display: flex;
+    align-items: center;
+}
+#my_recipes_delete {
+    height: 100%;
+    max-height: 100%;
+}
+#my_recipes_delete button {
+    height: 100%;
+    max-height: 100%;
+    display: flex;
+    align-items: center;
 }
 #my_recipes_sides {
     border: 1px solid olivedrab;

@@ -12,6 +12,7 @@ function My_Recipes() {
     const authContext = useContext(AuthContext);
     const userId = authContext.user._id;
     const {_id} = useParams();
+    const navigate = useNavigate()
     
     const [recipe, setRecipe] = useState();
     const [myRecipes, setMyRecipes] = useState([]);
@@ -47,6 +48,19 @@ function My_Recipes() {
         .catch((error)=>console.log(`Failed to load My recipes: ${error}`))
     }, [_id])
 
+    const editRecipe = ()=>{
+        navigate("/")
+    }
+
+    const deleteRecipe = ()=>{
+        axios
+        .delete(`${API_URL}/delete/recipe/${_id}`)
+        .then(()=>{
+            console.log("Recipe deleted!")
+            navigate("/")
+        })
+        .catch((error)=>console.log(error))
+    }
 
   return (
     <div>
@@ -57,21 +71,31 @@ function My_Recipes() {
             </div>
         </div>
 
-        <div id="my_recipes_sort_by">
-            <div>
-                <p>Sort By:</p>
+        <div id="my_recipes_options">
+            <div id="my_recipes_sort_by">
+                <div>
+                    <p>Sort By:</p>
+                </div>
+                <div>
+                    <p>Name</p>
+                </div>
+                <div>
+                    <p>Difficulty</p>
+                </div>
+                <div>
+                    <p>Time</p>
+                </div>
+                <div>
+                    <p>Cuisine</p>
+                </div>
             </div>
-            <div>
-                <p>Name</p>
-            </div>
-            <div>
-                <p>Difficulty</p>
-            </div>
-            <div>
-                <p>Time</p>
-            </div>
-            <div>
-                <p>Cuisine</p>
+            <div id="my_recipes_edit_delete">
+                <div id="my_recipes_edit">
+                    <button type="button" onClick={editRecipe}>EDIT</button>
+                </div>
+                <div id="my_recipes_delete">
+                    <button type="button" onClick={deleteRecipe}>DELETE</button>
+                </div>
             </div>
         </div>
 

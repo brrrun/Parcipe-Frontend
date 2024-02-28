@@ -1,7 +1,7 @@
 import React from 'react'
 import { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import "./styles.css"
 
 const API_URL = "http://localhost:5005/parcipe"
@@ -9,6 +9,7 @@ const API_URL = "http://localhost:5005/parcipe"
 function Homepage() {
 
   const [allRecipes, setAllRecipes] = useState(); 
+  const navigate = useNavigate()
 
   useEffect(()=>{
       axios
@@ -19,7 +20,7 @@ function Homepage() {
       .catch((error)=>console.log(error))
   }, [])
 
-  
+    
 
   return (
     <div
@@ -39,7 +40,6 @@ function Homepage() {
                     <div    // Title
                     id="all_recipes_title">
                         <Link to={`/view/recipe/${recipe._id}`}><h3>{recipe.title}</h3></Link>
-                        
                     </div>
 
                     <div    // Difficulty + Time
