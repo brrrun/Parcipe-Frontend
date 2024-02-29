@@ -16,7 +16,7 @@ function My_Recipe_Edit() {
     
     const [recipe, setRecipe] = useState();
     const [myRecipes, setMyRecipes] = useState([]);
-    const [editedRecipe, setEditedRecipe] = useState(recipe);
+    const [editedRecipe, setEditedRecipe] = useState();
     
 
     useEffect(()=>{
@@ -29,7 +29,6 @@ function My_Recipe_Edit() {
         .catch((error)=>console.log(`Failed to load My recipes: ${error}`))
     }, [])
 
- 
     useEffect(()=>{
         axios
         .get(`${API_URL}/user/recipes/${userId}`)
@@ -43,26 +42,38 @@ function My_Recipe_Edit() {
                 else if (recipe._id === _id){
                     setRecipe(recipe)
                 }
+                setEditedRecipe(recipe)
                 setMyRecipes(myOtherRecipes)
             })
         })
         .catch((error)=>console.log(`Failed to load My recipes: ${error}`))
-    }, [_id])
+    }, [])
 
     const editRecipe = ()=>{
+        console.log(editedRecipe._id)
         const isConfirmed = window.confirm("Save changes?")
         if (isConfirmed){
-
-            {/* -------- AXIOS LOGIC HERE ------- */}
-
-            navigate("/")
+            axios
+            .put(`${API_URL}/edit/recipe/${_id}`, editedRecipe)
+            .then(()=>{
+                console.log(`${editedRecipe.title} edited!`)
+                console.log(editedRecipe._id)
+                navigate(`/my/recipes/${editedRecipe._id}`)
+            })
         }
     }
 
-    const deleteRecipe = ()=>{
-        window.confirm("Can't delete recipe while in edit mode")
-    }
+    const deleteRecipe = ()=>{window.confirm("Can't delete recipe while in edit mode")}
 
+    const deleteImg = (imageIndex) => {
+        const isConfirmed = window.confirm("Delete this image?")
+        if (isConfirmed){
+            const updatedImages = [...editedRecipe.image];
+            updatedImages.splice(imageIndex, 1);
+            setEditedRecipe({...editedRecipe, image: updatedImages})
+        }
+    }
+    
 
   return (
     <div>
@@ -103,26 +114,26 @@ function My_Recipe_Edit() {
 
         <div id="my_recipes_sides">
             <div id="my_recipes_left">  {/* RECIPE LEFT */}
-                {recipe && 
+                {editedRecipe && 
                 <div id="my_recipes_recipe_left" >  {/* RECIPE NAME + IMAGE(S) + TAG(S) */}
                     <div id="my_recipes_name">  {/* RECIPE NAME */}
                         <input type="text" required placeholder={recipe.title} onChange={(e)=>{setEditedRecipe({...editedRecipe, title: e.target.value})}}/>
                     </div>
-                    {recipe.image && recipe.image.length > 0 ? (  /* IMAGE(S) */
+                    {editedRecipe.image && editedRecipe.image.length > 0 ? (  /* IMAGE(S) */
                         <div id="my_recipes_image">
-                        {recipe.image.map((imageObj, imageIndex) => {
+                        {editedRecipe.image.map((imageObj, imageIndex) => {
                             const imageDataURL = `data:image/jpeg;base64,${imageObj}`;
                             return (
                             <div key={imageIndex} style={{ position: 'relative', display: 'inline-block' }}>
                                 <img src={imageDataURL} alt="Your image" style={{ width: '100%', height: 'auto' }} />
-                                <button style={{ position: 'absolute', top: '1%', right: '1%', padding: '0 0.5vw', maxWidth: '2vw', maxHeight: '3vh', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '1vw', fontWeight: 'bold', backgroundColor: 'white', color: 'black', border: 'none', borderRadius: '0%', margin: '0'}}>X</button>
+                                <button style={{ position: 'absolute', top: '1%', right: '1%', padding: '0 0.5vw', maxWidth: '2vw', maxHeight: '3vh', display: 'flex', justifyContent: 'center', alignItems: 'center', fontSize: '1vw', fontWeight: 'bold', backgroundColor: 'white', color: 'black', border: 'none', borderRadius: '0%', margin: '0'}} onClick={() => deleteImg(imageIndex)}>X</button>
                             </div>
                               
                                     );
                                 })}
                             </div>
                         ) : (
-                            <img src="../../../../public/images/01 recipe default.jpg" />
+                            <p>No images</p>
                     )}
                     
                     <div id="my_recipes_tags">  {/* TAG */}
