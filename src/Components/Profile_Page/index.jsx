@@ -35,13 +35,22 @@ useEffect(() => {
             {profile? (
                 <div>
                     <div>
-                        <p>{profile.username}</p>
+                        <p>{profile && profile.username}</p>
                     </div>
                     <div>
-                        <p>{profile.email}</p>
+                        <p>{profile && profile.email}</p>
                     </div>
                     <div>
-                        {profile.createdRecipes.map((recipe, index)=>{
+                        <div>
+                            <h4>Shopping List:</h4>
+                        </div>
+                        <div>
+                            {profile && profile.shoppingList[0].amount}
+                        </div>
+                    </div>
+                    <div>
+                        {profile && 
+                        profile.createdRecipes.map((recipe, index)=>{
                             return (
                                 <div key={index}>
                                     <Link to={`/my/recipes/${recipe._id}`}><p>{recipe.title}</p></Link>

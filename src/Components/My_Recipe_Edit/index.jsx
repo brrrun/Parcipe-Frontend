@@ -50,14 +50,12 @@ function My_Recipe_Edit() {
     }, [])
 
     const editRecipe = ()=>{
-        console.log(editedRecipe._id)
         const isConfirmed = window.confirm("Save changes?")
         if (isConfirmed){
             axios
             .put(`${API_URL}/edit/recipe/${_id}`, editedRecipe)
             .then(()=>{
                 console.log(`${editedRecipe.title} edited!`)
-                console.log(editedRecipe._id)
                 navigate(`/my/recipes/${editedRecipe._id}`)
             })
         }
@@ -104,10 +102,10 @@ function My_Recipe_Edit() {
             </div>
             <div id="my_recipes_edit_delete">
                 <div id="my_recipes_edit">
-                    <button type="button" onClick={editRecipe}>EDIT</button>
+                    <button type="button" onClick={editRecipe}>Save</button>
                 </div>
                 <div id="my_recipes_delete">
-                    <button type="button" onClick={deleteRecipe}>DELETE</button>
+                    <button type="button" onClick={deleteRecipe}>Delete</button>
                 </div>
             </div>
         </div>

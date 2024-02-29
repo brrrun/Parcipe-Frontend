@@ -16,6 +16,7 @@ function My_Recipes() {
     
     const [recipe, setRecipe] = useState();
     const [myRecipes, setMyRecipes] = useState([]);
+    const [profile, setProfile] = useState();
     
 
     useEffect(()=>{
@@ -23,9 +24,17 @@ function My_Recipes() {
         .get(`${API_URL}/recipe/${_id}`)
         .then((response)=>{
             setRecipe(response.data)
-            console.log("response.data:",response.data)
         })
         .catch((error)=>console.log(`Failed to load My recipes: ${error}`))
+        console.log("recipe1:", recipe)
+        axios
+        .get(`${API_URL}/profile/${userId}`)
+        .then((response) => {
+            setProfile(response.data)
+            return response;
+        })
+        .catch((error) => console.log(error))
+        console.log("profile1:", profile)
     }, [])
 
  
@@ -70,6 +79,37 @@ function My_Recipes() {
         else {console.log("Deletion canceled")}
     }
 
+    let people;
+    const numPeople = (e) => {
+        people = parseInt(e.target.value);
+    }
+
+    const shopList = async () => {
+        console.log("profile.shoppingList", profile.shoppingList);
+        console.log("recipe.ingredients", recipe.ingredients);
+        console.log("people", people);
+
+        const ingredients = recipe.ingredients;
+        const ingredientList = ingredients.map((ingredient) => ({
+            ...ingredient,
+            amount: ingredient.amount * parseInt(people)
+        }));
+        console.log("ingredientList:", ingredientList)
+        
+
+        setProfile(prevProfile => ({ ...prevProfile, shoppingList: ingredientList }));
+        
+        try {
+            await axios
+            .put(`${API_URL}/profile/${userId}/edit`, { ...profile, shoppingList: ingredientList })
+                console.log("Shopping list updated!")
+                navigate(`/profile/${userId}`)
+        }   catch (error) {
+            console.log(error);
+        }
+        console.log("profile.shoppingList", profile.shoppingList)
+    }
+
 
   return (
     <div>
@@ -81,7 +121,15 @@ function My_Recipes() {
         </div>
 
         <div id="my_recipes_options">
-            <div id="my_recipes_sort_by">
+            <div id="my_recipes_shop_list">
+                <div id="my_recipes_shop_list_button">     {/* SHOP FOR BUTTON */}
+                    <button onClick={shopList}>Shop for:</button>
+                </div>
+                <div id="my_recipes_shop_list_input">     {/* SHOP INPUT */}
+                    <input type="number" onChange={numPeople}/>
+                </div>
+            </div>
+            <div id="my_recipes_sort_by">     {/* SORT BY (FILTER) */}
                 <div>
                     <p>Sort By:</p>
                 </div>
@@ -98,25 +146,25 @@ function My_Recipes() {
                     <p>Cuisine</p>
                 </div>
             </div>
-            <div id="my_recipes_edit_delete">
+            <div id="my_recipes_edit_delete">     {/* EDIT & DELETE BUTTONS */}
                 <div id="my_recipes_edit">
-                    <button type="button" onClick={editRecipe}>EDIT</button>
+                    <button type="button" onClick={editRecipe}>Edit</button>
                 </div>
                 <div id="my_recipes_delete">
-                    <button type="button" onClick={deleteRecipe}>DELETE</button>
+                    <button type="button" onClick={deleteRecipe}>Delete</button>
                 </div>
             </div>
         </div>
 
         <div id="my_recipes_sides">
-            <div id="my_recipes_left">
+            <div id="my_recipes_left">     {/* RECIPE NAME & IMAGE(S) */}
                 {recipe && 
                 <div id="my_recipes_recipe_left" >
-                    <div id="my_recipes_name">
+                    <div id="my_recipes_name">     {/* RECIPE NAME */}
                         <p>{recipe.title}</p>
                     </div>
                     {recipe.image && recipe.image.length > 0 ? (
-                        <div id="my_recipes_image">
+                        <div id="my_recipes_image">     {/* RECIPE IMAGE(S) */}
                         {recipe.image.map((imageObj, imageIndex) => {
                             const imageDataURL = `data:image/jpeg;base64,${imageObj}`;
                             return (
@@ -164,7 +212,7 @@ function My_Recipes() {
                 }
             </div>
         </div>
-            <div id="my_recipes_right">
+            <div id="my_recipes_right">     {/* MY OTHER RECIPES LIST */}
                 {myRecipes ? (<>
                     {myRecipes.map((recipe, index) => (
                     <div key={index}>
