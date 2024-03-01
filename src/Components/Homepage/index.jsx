@@ -29,7 +29,6 @@ function Homepage() {
     <div    // GRID
     id="all_recipes_grid">
            
-                
                 {allRecipes && allRecipes.length > 0 ? ( 
                 allRecipes.map((recipe, recipeIndex) => (
 

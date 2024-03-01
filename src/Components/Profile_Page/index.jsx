@@ -27,43 +27,63 @@ useEffect(() => {
 
 
   return (
-    <div>
-        <h1>Profile</h1>
-
+    <div id="profile_root">
         <div 
-        id="profile_data">
-            {profile? (
+        id="profile_left">
+            <div id="profile_properties">
                 <div>
-                    <div>
-                        <p>{profile && profile.username}</p>
-                    </div>
-                    <div>
-                        <p>{profile && profile.email}</p>
-                    </div>
-                    <div>
-                        <div>
-                            <h4>Shopping List:</h4>
-                        </div>
-                        <div>
-                            {profile && profile.shoppingList[0].amount}
-                        </div>
-                    </div>
-                    <div>
-                        {profile && 
-                        profile.createdRecipes.map((recipe, index)=>{
-                            return (
-                                <div key={index}>
-                                    <Link to={`/my/recipes/${recipe._id}`}><p>{recipe.title}</p></Link>
-                                </div>
-                            )
-                        })}
-                    </div>
+                    <p>Username: {profile && profile.username}</p>
                 </div>
+                <div>
+                    <p>Email: {profile && profile.email}</p>
+                </div>
+                <div>
+                    <p>Created {profile && profile.createdRecipes.length} recipes!</p>
+                </div>
+            </div>
+            <div id="profile_shopping">
+                <div>
+                    <h5>Shopping List:</h5>
+                </div>
+                {profile? (
+                <div>
+                    {profile.shoppingList.map((item, index)=>{
+                        return (
+                        <div id="profile_shopping_each">
+                            <div key={index}>
+                                <p>{item.name} :</p>
+                            </div>
+                            <div>
+                                <p>{item.amount}</p>
+                            </div>
+                            <div>
+                                <p>{item.unit}</p>
+                            </div>
+                        </div>
+                        ) 
+                    })} 
+                </div>
+                ) : (
+                    <p>Loading...</p>
+                )}
+            </div>
+        </div>
+
+        <div id="profile_right">
+            {profile? (
+            <div id="profile_my_recipes">
+                {profile.createdRecipes.map((recipe, index)=>{
+                    return (
+                        <div key={index} id="profile_my_recipes_each">
+                            <Link to={`/my/recipes/${recipe._id}`}><p>{recipe.title}</p></Link>
+                        </div>
+                    ) 
+                })} 
+            </div>
             ) : (
                 <p>Loading...</p>
             )}
         </div>
-
     </div>
   )
 }
