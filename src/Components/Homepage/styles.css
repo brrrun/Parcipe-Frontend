@@ -1,8 +1,8 @@
 #all_recipes_grid {
-    border: 2px solid brown;
+    border: transparent;
     position: absolute;
     left: 0;
-    top: 2.1em;
+    top: 7%;
     box-sizing: border-box;
     display: grid;
     grid-template-columns: repeat(auto-fill, 30em);
@@ -12,44 +12,56 @@
     margin-left: 2em;
     width: 92em;
     max-width: 100%;
-    height: 40em;
+    height: 88%;
     max-height: 100%;
     overflow-y: scroll;
-    background-color:rgb(181, 223, 205);
+    background-color:rgb(76, 203, 148);
+    border-radius: 0.5em;
+    padding-top: 0.5em;
+    padding-bottom: 0.5em;
 }
 #all_recipes_each {
-    border: 2px solid green;
+    border: transparent;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    
     margin: 0.4em;
     overflow: hidden;
-    width: 460px;
-    height: 400px;
+    width: 99%;
+    max-width: 100%;
+    height: 25em;
     background-color:rgb(245, 255, 250);
+    border-radius: 0.5em;
 }
 #all_recipes_title {
-    border: 1px solid black;
-    max-height: 2.em;
-    margin-top: 0.5em;
-    margin-bottom: 0.5em;
+    max-height: 2em;
+    margin-top: 0;
+    padding: 0;
+    margin-bottom: 0.3em;
 }
 #all_recipes_title h3 {
-    border: solid 1px red;
     margin: 0;
+    padding: 0;
     display: flex;
     align-items: center;
+    border: 0.01em solid transparent;
+}
+#all_recipes_title h3:hover {
+    cursor: pointer;
+    border: 0.01em solid rgb(181, 223, 205);
+    border-radius: 0.5em;
+    padding: 0 0.5em 0 0.5em;
 }
 #all_recipes_settings {
-    border: 1px solid goldenrod;
     display: flex;
     justify-content: space-between;
     width: 28em;
     max-width: 28em;
     height: 1.5em;
     max-height: 1.5em;
+    border: 0.01em solid rgb(181, 223, 205);
+    border-radius: 0.5em;
 }
 #all_recipes_settings h6, p {
     margin: 0;
@@ -58,7 +70,6 @@
     margin-left: 0.4em;
 }
 #all_recipes_difficulty {
-    border: 1px solid khaki;
     display: flex;
     flex: 1;
     margin-left: 3.5em;
@@ -68,7 +79,6 @@
     margin-right: 0.5em;
 }
 #all_recipes_time {
-    border: 1px solid lawngreen;
     display: flex;
     flex: 1;
     margin-left: 1em;
@@ -81,7 +91,6 @@
     margin-right: 0.2em;
 }
 #all_recipes_img {
-    border: 1px solid orange;
     margin-top: 0.5em;
     overflow-x: scroll;
     width: 28em;
@@ -90,12 +99,25 @@
     max-height: 20em;
 }
 #all_recipes_container {
-    border: 1px solid green;
     display: flex;
     align-items: center;
 }
 #all_recipes_img img {
-    border: 1px solid red;
     max-height: 290px;
     padding: 0.05em;
+}
+::-webkit-scrollbar {
+    width: 1.5em;
+    height: 1em;
+}
+::-webkit-scrollbar-track {
+    background: rgb(181, 223, 205);
+    border-radius: 0 0.5em 0.5em 0;
+}
+::-webkit-scrollbar-thumb {
+    background-color: rgb(76, 203, 148);
+    border-radius: 0.5em;
+}
+::-webkit-scrollbar-thumb:hover {
+    background: rgb(76, 203, 148);
 }

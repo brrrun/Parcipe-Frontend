@@ -17,37 +17,37 @@ function Navbar() {
   return (
     <div id="navbar">
 
-        <div>
+        <div class="navbar_links">
             <Link to="/"> Homepage </Link>
         </div>
 
         {isAuthenticated? ( <>
             
-            <div>
+            <div class="navbar_links"> 
                 <Link to="/new"> Add Recipe </Link>
             </div>
-            <div>
+            <div class="navbar_links">
                 <Link to={`/my/recipes/${_id}`}> My Recipes </Link>
             </div>
-            <div>
+            <div class="navbar_links">
                 <Link to="/view/recipe/:_id"> ONE </Link>
             </div>
-            <div>
+            <div class="navbar_links">
                 <Link to="/my/recipe/edit/:_id">EDIT</Link>
             </div>
-            <div>
+            <div class="navbar_links">
                 <Link to={`/profile/${_id}`}> Profile </Link>
             </div>
-            <div>
+            <div class="navbar_links">
             <   Link onClick={logout} to="/">Logout</Link>
             </div>
 
         </>) : (<>
 
-            <div>
+            <div class="navbar_links">
                 <Link to="/login">Login</Link>
             </div>
-            <div>
+            <div class="navbar_links">
                 <Link to="/sign/up">Sign_Up</Link>
             </div>
 
