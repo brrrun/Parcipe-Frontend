@@ -117,6 +117,7 @@
 ::-webkit-scrollbar-thumb {
     background-color: rgb(76, 203, 148);
     border-radius: 0.5em;
+    border: 0.01em solid rgb(181, 223, 205);
 }
 ::-webkit-scrollbar-thumb:hover {
     background: rgb(76, 203, 148);
