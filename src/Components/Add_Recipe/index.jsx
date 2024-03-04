@@ -6,6 +6,7 @@ import axios from 'axios'
 import MyDropzone from './dropzone';
 import { AuthContext } from '../../Context/auth.context';
 
+
 const API_URL = "http://localhost:5005/parcipe"
 
 function Add_Recipe() { 
@@ -14,9 +15,6 @@ function Add_Recipe() {
     const authContext = useContext(AuthContext);
     const author = authContext.user.username;
     const authorId = authContext.user._id;
-   // const author = "John"
-    console.log("author:", author)
-    console.log("authorId", authorId)
 
     const [newRecipe, setNewRecipe] = useState({ 
         title: "",
@@ -72,7 +70,6 @@ function Add_Recipe() {
         return btoa(binaryString);
     };
 
-
         // Handles the creation of the recipe
     const handleCreatedRecipe = (e) =>{
         e.preventDefault();
@@ -103,10 +100,6 @@ function Add_Recipe() {
         .catch((error)=>{
             console.log(`ERROR: ${error}`)})
     }};
-
-    
-        
-
 
 
   return (
@@ -169,7 +162,33 @@ function Add_Recipe() {
                     <p>Tags:</p>
                 </div>
                 <div>
-                    <input type="text" />
+                    <input 
+                        type="text" 
+                        onKeyDown={
+                            (e)=>{ if (e.key === "Enter" && e.target.value.length > 0 && newRecipe.tags.length <= 2) {
+                                    const newTag = e.target.value;
+                                    setNewRecipe((prevNewRecipe) => ({ ...prevNewRecipe, tags: [...prevNewRecipe.tags, newTag] }));
+                                    e.target.value = "";
+                                    }
+                                else if (newRecipe.tags.length > 2){
+                                    setErrorMsg("You can only add up to 3 tags")
+                                    }
+                                }
+                            } 
+                        placeholder={newRecipe.tags.length === 0 ? "Add a tag" : newRecipe.tags.length <= 2 ? "Add another?" : ""}/>
+                </div>
+                <div>
+                    {newRecipe.tags.length > 0 ? (
+                    <div id="add_recipe_tags_each">
+                        {newRecipe.tags.map((tag, index) => (
+                            <div key={index}>
+                                <p>{tag}</p>
+                            </div>
+                        ))}
+                    </div>
+                        ) : (
+                    ""
+                )}
                 </div>
             </div>         
 
