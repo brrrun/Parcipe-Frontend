@@ -1,24 +1,40 @@
-#all_recipes_grid {
-    border: transparent;
-    position: absolute;
+#all_recipes_main {
+    border: 1px solid red;
+    display: flex;
+    position:absolute;
+    justify-content: center;
     left: 0;
-    top: 7%;
-    box-sizing: border-box;
-    display: grid;
-    grid-template-columns: repeat(auto-fill, 30em);
-    margin-top: 1em;
-    margin-bottom: 0.5em;
-    margin-right: 2em;
-    margin-left: 2em;
-    width: 92em;
+    top: 8%;
+    margin: 0;
+    padding: 0;
+    width: 100%;
     max-width: 100%;
     height: 88%;
+    max-height: 100%;
+    align-items: center;
+}
+#all_recipes_grid {
+    border: transparent;
+    box-sizing: border-box;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(15em, 25em));
+    justify-content: center;
+    justify-self: center;
+    margin-top: 1%;
+    margin-bottom: 0.5%;
+    margin-right: 2%;
+    margin-left: 2%;
+    width: 80%;
+    max-width: 80%;
+    height: 98%;
     max-height: 100%;
     overflow-y: scroll;
     background-color:rgb(76, 203, 148);
     border-radius: 0.5em;
-    padding-top: 0.5em;
-    padding-bottom: 0.5em;
+    padding-top: 0.5%;
+    padding-bottom: 0.5%;
+    padding-left: 0;
+    padding-right: 0;
 }
 #all_recipes_each {
     border: transparent;
@@ -28,7 +44,6 @@
     justify-content: center;
     margin: 0.4em;
     overflow: hidden;
-    width: 99%;
     max-width: 100%;
     height: 25em;
     background-color:rgb(245, 255, 250);
@@ -37,6 +52,7 @@
 #all_recipes_title {
     max-height: 2em;
     margin-top: 0;
+    display: flex;
     padding: 0;
     margin-bottom: 0.3em;
 }
@@ -56,8 +72,7 @@
 #all_recipes_settings {
     display: flex;
     justify-content: space-between;
-    width: 28em;
-    max-width: 28em;
+    max-width: 100%;
     height: 1.5em;
     max-height: 1.5em;
     border: 0.01em solid rgb(181, 223, 205);
@@ -93,22 +108,25 @@
 #all_recipes_img {
     margin-top: 0.5em;
     overflow-x: scroll;
-    width: 28em;
-    max-width: 28em;
-    height: 20em;
+
+    max-width: 100%;
+
     max-height: 20em;
+    
 }
 #all_recipes_container {
     display: flex;
     align-items: center;
 }
 #all_recipes_img img {
+    width: adjust(100%);
     max-height: 290px;
+    height: adjust(100%);
     padding: 0.05em;
 }
 ::-webkit-scrollbar {
-    width: 1.5em;
-    height: 1em;
+    max-width: 1.5em;
+    max-height: 1em;
 }
 ::-webkit-scrollbar-track {
     background: rgb(181, 223, 205);

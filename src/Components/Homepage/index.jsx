@@ -23,9 +23,7 @@ function Homepage() {
     
 
   return (
-    <div
-    id="all_recipes_root">
-
+    <div id="all_recipes_main">
     <div    // GRID
     id="all_recipes_grid">
            
