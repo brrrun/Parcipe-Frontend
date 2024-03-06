@@ -16,7 +16,7 @@ function Navbar() {
 
   return (
     <div id="navbar">
-
+        
         <div class="navbar_links">
             <Link to="/"> Homepage </Link>
         </div>
@@ -52,6 +52,7 @@ function Navbar() {
             </div>
 
         </>)}
+
     </div>
   )
 }

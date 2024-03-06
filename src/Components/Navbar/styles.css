@@ -1,5 +1,4 @@
 #navbar {
-    border: 1px solid black;
     position:absolute;
     display: flex;
     flex-wrap:wrap;
@@ -10,8 +9,7 @@
     margin-top: 0;
     width: 96vw;
     max-width: 96vw;
-    height: 3vw;
-    max-height: 3vw;
+    min-height: 3em;
     border-radius: 50vw;
     border-color: transparent;
     background-color:rgb(76, 203, 148);
@@ -21,12 +19,12 @@
     border-radius: 1vw;
   }
   .navbar_links a {
-    position: relative; 
-    display: inline-block; /* Ensure the link behaves like a block element, allowing vertical alignment */
+    position:fixed; 
+    display: inline-block;
     line-height: 1;
     z-index: 1;
     color: rgb(245, 255, 250);
-    font-size: 1vw;
+    top: 3.5%;
 }
   .navbar_links a::before {
     content: "";
@@ -39,7 +37,7 @@
     height: calc(100% + 2 * 0.5vw); /* Adjust the height to include padding */
     border-radius: 1vw;
     z-index: -1;
-    transition: transform 0.3s ease; /* ------ */
+    transition: transform 0.03s ease; 
     background-color: rgb(76, 203, 148);
     box-shadow: 0 0 0.05vw 0.1vw rgb(181, 223, 205);
   }
