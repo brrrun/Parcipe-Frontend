@@ -104,8 +104,11 @@ function Add_Recipe() {
 
   return (
     <div id="add_recipe_main">
+    <div id="add_recipe_container">
 
-        <div    // Page TITLE
+    
+
+        {/*<div    // Page TITLE
             id="add_recipe_page_title">
                                 <div> 
                                     { // TEST YOUR BUTTON HERE ---------------------------------------------- REPLACE BY TITLE HERE
@@ -114,7 +117,7 @@ function Add_Recipe() {
                                         : <p>Write down your recipe</p>
                                     }
                                 </div>
-        </div>
+                                </div>*/}
 
         <div    // PUBLISH & DRAFT Buttons
             id="add_recipe_publish">
@@ -489,6 +492,7 @@ function Add_Recipe() {
 
             </div>
         </div>
+    </div>
     </div>
   )
 }
