@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react'
 import axios from 'axios'
 import { useParams, Link, useNavigate } from 'react-router-dom'
 
-const API_URL = "http://localhost:5005/parcipe"
+const API_URL = "https://parcipe-backend.onrender.com"
 
 function One_Recipe() {
 

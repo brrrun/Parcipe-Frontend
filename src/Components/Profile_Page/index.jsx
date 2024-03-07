@@ -5,7 +5,7 @@ import "./styles.css"
 import { Link, useNavigate, useParams } from 'react-router-dom';
 import { AuthContext } from '../../Context/auth.context';
 
-const API_URL = "http://localhost:5005/parcipe"
+const API_URL = "https://parcipe-backend.onrender.com"
 
 
 function Profile() {

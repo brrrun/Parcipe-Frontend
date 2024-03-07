@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import "./styles.css"
 
-const API_URL = "http://localhost:5005/parcipe"
+const API_URL = "hhttps://parcipe-backend.onrender.com"
 
 function Homepage() {
 
