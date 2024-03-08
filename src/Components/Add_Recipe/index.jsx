@@ -6,8 +6,8 @@ import axios from 'axios'
 import MyDropzone from './dropzone';
 import { AuthContext } from '../../Context/auth.context';
 
-const API_URL = "https://parcipe-backend.adaptable.app/parcipe"
-//const API_URL = "https://localhost:5005/parcipe"
+//const API_URL = "https://parcipe-backend.adaptable.app/parcipe"
+const API_URL = "https://localhost:5005/parcipe"
 
 function Add_Recipe() { 
 
