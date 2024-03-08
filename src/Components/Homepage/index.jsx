@@ -4,7 +4,7 @@ import axios from 'axios';
 import { Link, useNavigate } from 'react-router-dom';
 import "./styles.css"
 
-const API_URL = "https://parcipe-backend.netlify.app/parcipe"
+const API_URL = "https://parcipe-backend.adaptable.app/parcipe"
 
 function Homepage() {
 
