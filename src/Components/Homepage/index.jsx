@@ -5,6 +5,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import "./styles.css"
 
 const API_URL = "https://parcipe-backend.adaptable.app/parcipe"
+//const API_URL = "https://localhost:5005/parcipe"
 
 function Homepage() {
 

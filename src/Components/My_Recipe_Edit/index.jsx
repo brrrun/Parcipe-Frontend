@@ -5,8 +5,8 @@ import { useState, useEffect, useContext } from 'react'
 import axios from 'axios';
 import { AuthContext } from '../../Context/auth.context';
 
-const API_URL = "https://parcipe-backend.onrender.com"
-//const API_URL = "http://localhost:5005"
+const API_URL = "https://parcipe-backend.adaptable.app/parcipe"
+//const API_URL = "https://localhost:5005/parcipe"
 
 function My_Recipe_Edit() {
 
