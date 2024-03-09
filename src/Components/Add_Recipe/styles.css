@@ -11,6 +11,7 @@
     max-width: 100%;
     height: 88%;
     max-height: 100%;
+    overflow: hidden;
   }
   #add_recipe_container {
     border: transparent;
@@ -23,10 +24,10 @@
     margin-bottom: 0.5%;
     margin-right: 2%;
     margin-left: 2%;
-    width: 90%;
+    width: 80%;
     max-width: 80%;
     height: 98%;
-    max-height: 100%;
+    max-height: 98%;
     overflow: hidden;
     background-color:rgb(76, 203, 148);
     border-radius: 0.5em;
@@ -40,7 +41,6 @@
     border: 1px solid rgb(181, 223, 205);
     border-radius: 0.5em;
     display: flex;
-
     justify-content:left;
     align-items: center;
     box-sizing: border-box;
@@ -97,7 +97,7 @@
     display: flex;
     justify-content:flex-start;
     height: 2em;
-    max-height: 2em;
+    max-height: 100%;
     margin-bottom: 0.2em;
     margin-top: 0.5em;
     width: 100%;
@@ -166,8 +166,9 @@
     border: transparent;
     box-sizing: border-box;
     display: flex;
-    height: 100%;
-    max-height: 100%;
+    align-items: center;
+    height: 2em;
+    max-height: 2em;
     padding: 0 0.1em 0 0.1em;
     margin: 0;
     width: 100%;
@@ -329,101 +330,125 @@
     max-height: 100%;
     background-color: white;
   }
-  #add_recipe_ingredients { /* INGREDIENTS */
-    border: 1px solid blueviolet;
+  #add_recipe_ingredients {   /* INGREDIENTS */
+    border: transparent;
+    box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    height: 100%;
-    max-height: 100%;
-    width: 32.5em;
+    justify-content: space-between;
+    height: 4.2em;
+    max-height: 4.4em;
+    width: 100%;
     max-width: 100%;
+    margin-bottom: 0.2em;
   }
   #add_recipe_ingredients_title {
-    border: 1px solid black;
+    border: transparent;
     display: flex;
     box-sizing: border-box;
-    margin: 0;
-    width: 8em;
-    align-content: flex-start;
+    justify-content: center;
     align-items: center;
+    width:6em;
+    max-width: 6em;
     height: 2em;
     max-height: 2em;
-    justify-content: center;
-    background-color:rgb(245, 255, 250);
-  }
-  #add_recipe_ingredients_p1 {
-    border: 1px solid black;
-    display: flex;
-    box-sizing: border-box;
-    justify-content: right;
-    margin-right: 0.1em;
-    width: 3.1em;
-    height: 1.65em;
-    max-height: 2em;
-    align-items: center;
-    background-color:rgb(245, 255, 250);
-  }
-  #add_recipe_ingredients_p2 {
-    border: 1px solid black;
-    display: flex;
-    box-sizing: border-box;
-    justify-content: right;
-    margin-left: 0.3em;
-    margin-right: 0.1em;
-    width: 4em;
-    height: 1.65em;
-    max-height: 2em;
-    align-items: center;
-    background-color:rgb(245, 255, 250);
-  }
-  #add_recipe_ingredients_p3 {
-    border: 1px solid black;
-    display: flex;
-    box-sizing: border-box;
-    justify-content: right;
-    margin-left: 0.3em;
-    margin-right: 0.1em;
-    width: 2.5em;
-    height: 1.65em;
-    max-height: 2em;
-    align-items: center;
     background-color:rgb(245, 255, 250);
   }
   #add_recipe_ingredients_options {
-    border: 1px solid blueviolet;
+    border: transparent;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 2em;
+    max-height: 2em;
+    width: 100%;
+  }
+  #add_recipe_ingredients_ingredient{
     display: flex;
     height: 2em;
     max-height: 2em;
   }
-  #add_recipe_ingredients_inp1 {
-    display: flex;
+  #add_recipe_ingredients_p1 {
+    border: transparent;
     box-sizing: border-box;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 3.5em;
+    height: 2em;
+    max-height: 2em;
+    background-color:rgb(245, 255, 250);
+  }
+  #add_recipe_ingredients_amount {
+    display: flex;
+    height: 100%;
+    max-height: 100%;
+  }
+  #add_recipe_ingredients_p2 {
+    border: 1px transparent;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: left;
+    width: 4.5em;
+    height: 2em;
+    max-height: 2em;
+    align-items: center;
+    background-color:rgb(245, 255, 250);
+  }
+  #add_recipe_ingredients_units {
+    display: flex;
+    height: 2em;
+    max-height: 2em;
+  }
+  #add_recipe_ingredients_p3 {
+    border: transparent;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+    width: 3em;
+    height: 2em;
+    max-height: 2em;
+    background-color:rgb(245, 255, 250);
+  }
+  #add_recipe_ingredients_inp1 {
+    border-top: transparent;
+    border-bottom: transparent;
+    border-left: 0.01em solid rgb(76, 203, 148);
+    border-right: transparent;
+    box-sizing: border-box;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     width: 9em;
-    height: 2.3em;
-    max-height: 2.3em;
-    margin-left: 0.2em;
-    margin-right: 0.2em;
+    height: 2em;
+    max-height: 2em;
     background-color: white;
   }
   #add_recipe_ingredients_inp2 {
-    display: flex;
-    box-sizing: border-box;
-    width: 3.1em;
-    height: 2.3em;
-    max-height: 2.3em;
-    margin-left: 0.2em;
-    margin-right: 0.2em;
-    background-color: white;
-  }
-  #add_recipe_ingredients select {
+    border-top: transparent;
+    border-bottom: transparent;
+    border-left: 0.01em solid rgb(76, 203, 148);
+    border-right: transparent;
     display: flex;
     box-sizing: border-box;
     width: 4em;
-    height: 2.3em;
-    max-height: 2.3em;
-    margin-left: 0.2em;
-    margin-right: 0.2em;
+    height: 2em;
+    max-height: 2em;
+    background-color: white;
+  }
+  #add_recipe_ingredients select {
+    border-top: transparent;
+    border-bottom: transparent;
+    border-left: 0.01em solid rgb(76, 203, 148);
+    border-right: transparent;
+    display: flex;
+    box-sizing: border-box;
+    width: 4.5em;
+    height: 2em;
+    max-height: 2em;
     background-color: white;
   }
   #add_recipe_ingredients button {
@@ -434,31 +459,41 @@
     align-items: center;
     height: 2em;
     max-height: 2em;
-    margin-left: 0.8em;
-    margin-right: 0.2em;
     background-color:rgb(245, 255, 250);
   }
-  #add_recipe_ingredients_rendering {
-    border: 3px solid blueviolet;
-    height: 24em;
-    max-height: 100%;
-    width: 32em;
+  #add_recipe_ingredients_rendering {   /* INGREDIENTS RENDERING */
+    border: transparent;
+    height: 22em;
+    max-height: 22em;
+    width: 100%;
     max-width: 100%;
     overflow-y: scroll;
+    overflow-wrap: normal;
     display: flex;
-    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
     background-color:white;
   }
+  #add_recipe_ingredients_rendering::-webkit-scrollbar-track {
+    background: rgb(181, 223, 205);
+    border-radius: 0.5em 0 0 0.5em;
+  }
+  #add_recipe_ingredients_rendering::-webkit-scrollbar-thumb {
+    background-color: rgb(76, 203, 148);
+    border-radius: 0.5em 0 0 0.5em;
+    border: 0.01em solid rgb(181, 223, 205);
+}
   #add_recipe_ingredients_rendering p {
-    border: 1px solid black;
+    border-radius: 1em;
     box-sizing: border-box;
-    width: 15.1em;
     max-width: 100%;
+    height: 2em;
     max-height: 2em;
     margin-bottom: 0.1em;
     margin-left: 0.2em;
     margin-top: 0.2em;
-    text-align:left;
+    padding: 0 0.5em 0 0.5em;
+    text-align:center;
     background-color: white;
   }
   

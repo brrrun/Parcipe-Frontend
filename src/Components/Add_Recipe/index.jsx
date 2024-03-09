@@ -7,7 +7,7 @@ import MyDropzone from './dropzone';
 import { AuthContext } from '../../Context/auth.context';
 
 //const API_URL = "https://parcipe-backend.adaptable.app/parcipe"
-const API_URL = "https://localhost:5005/parcipe"
+const API_URL = "http://localhost:5005/parcipe"
 
 function Add_Recipe() { 
 
@@ -287,17 +287,18 @@ function Add_Recipe() {
             </div>
 
             <div            // INGREDIENTS
-                id="add_recipe_ingredients">
+            id="add_recipe_ingredients">
                 <div
                     id="add_recipe_ingredients_title"> 
                     <p>Ingredients<span class="mandatory">*</span></p>
                 </div>
 
                 <div id="add_recipe_ingredients_options">
-                    <div id="add_recipe_ingredients_p1">
-                        <p>Name:</p>
-                    </div>
-                    <div>
+                    <div id="add_recipe_ingredients_ingredient">
+                        <div id="add_recipe_ingredients_p1">
+                            <p>Name:</p>
+                        </div>
+                        <div>
                         <input      /* Ingredient'S NAME */
                             id="add_recipe_ingredients_inp1"
                             type="text"  
@@ -307,49 +308,51 @@ function Add_Recipe() {
                                     name: e.target.value
                                 }))
                             }}/>
+                        </div>
                     </div>
-                    
-                    <div id="add_recipe_ingredients_p2">
-                        <p>Amount:</p>
+                    <div id="add_recipe_ingredients_amount">
+                        <div id="add_recipe_ingredients_p2">
+                            <p>Amount:</p>
+                        </div>
+                        <div>
+                            <input      /* Ingredient'S AMOUNT */
+                                id="add_recipe_ingredients_inp2"
+                                type="number"  
+                                min="0"
+                                onChange={(e)=>{
+                                    setAddIngredient((prevAddIngredient)=>({
+                                        ...prevAddIngredient,
+                                        amount: e.target.value
+                                    }))
+                                }}/>
+                        </div>
                     </div>
-                    <div>
-                        <input      /* Ingredient'S AMOUNT */
-                            id="add_recipe_ingredients_inp2"
-                            type="number"  
-                            min="0"
-                            onChange={(e)=>{
-                                setAddIngredient((prevAddIngredient)=>({
-                                    ...prevAddIngredient,
-                                    amount: e.target.value
-                                }))
-                            }}/>
+                    <div id="add_recipe_ingredients_units">
+                        <div id="add_recipe_ingredients_p3">
+                            <p>Units</p>
+                        </div>
+                        <div>
+                            <select         /* Ingredient'S UNIT */
+                                type="text"  
+                                onChange={(e)=>{
+                                    setAddIngredient((prevAddIngredient)=>({
+                                        ...prevAddIngredient,
+                                        unit: e.target.value
+                                    }))
+                                }}> 
+                                    <option disabled selected defaultValue="">Select</option>
+                                    <option value="ml"> ml </option>
+                                    <option value="L"> L </option>
+                                    <option value="g"> grams </option>
+                                    <option value="kg"> Kgs </option>
+                                    <option value="tsp"> stp </option>
+                                    <option value="tbsp"> tbsp </option>
+                                    <option value="cup"> cups </option>
+                                    <option value="piece"> pieces </option>
+                                    <option value="slice"> slices </option>
+                                </select>
+                        </div>
                     </div>
-                    
-                    <div id="add_recipe_ingredients_p3">
-                        <p>Units</p>
-                    </div>
-                    <div>
-                        <select         /* Ingredient'S UNIT */
-                            type="text"  
-                            onChange={(e)=>{
-                                setAddIngredient((prevAddIngredient)=>({
-                                    ...prevAddIngredient,
-                                    unit: e.target.value
-                                }))
-                            }}> 
-                                <option disabled selected defaultValue="">Select Unit</option>
-                                <option value="ml"> ml </option>
-                                <option value="L"> L </option>
-                                <option value="g"> grams </option>
-                                <option value="kg"> Kgs </option>
-                                <option value="tsp"> stp </option>
-                                <option value="tbsp"> tbsp </option>
-                                <option value="cup"> cups </option>
-                                <option value="piece"> pieces </option>
-                                <option value="slice"> slices </option>
-                            </select>
-                    </div>
-                    
                     <div>
                         <button /* Saves the user's whole ingredient input Object on the Recipe State,
                                 if the values for each key meet the requirements */
@@ -371,7 +374,7 @@ function Add_Recipe() {
                         }}>Add</button>
                     </div>
                 </div>
-
+                </div>
                 <div            // INGREDIENTS RENDERING
                 id="add_recipe_ingredients_rendering">
                     {newRecipe.ingredients ?  
@@ -382,7 +385,7 @@ function Add_Recipe() {
                     ))
                     : <p>Add your first ingredient</p>
                     }
-                </div>
+                
             </div>
             </div>
 

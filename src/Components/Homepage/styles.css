@@ -124,7 +124,11 @@
     max-width: 1.5em;
     max-height: 1em;
 }
-::-webkit-scrollbar-track {
+#all_recipes_grid::-webkit-scrollbar-track {
+    background: rgb(181, 223, 205);
+    border-radius: 0 0.5em 0.5em 0;
+}
+#all_recipes_img::-webkit-scrollbar-track {
     background: rgb(181, 223, 205);
     border-radius: 0 0.5em 0.5em 0;
 }
