@@ -11,15 +11,13 @@
     max-width: 100%;
     height: 88%;
     max-height: 100%;
-    overflow: hidden;
+    overflow-x: hidden;
   }
   #add_recipe_container {
     border: transparent;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
-    justify-content: center;
-    justify-self: center;
     margin-top: 1%;
     margin-bottom: 0.5%;
     margin-right: 2%;
@@ -27,8 +25,7 @@
     width: 80%;
     max-width: 80%;
     height: 98%;
-    max-height: 98%;
-    overflow: hidden;
+    
     background-color:rgb(76, 203, 148);
     border-radius: 0.5em;
     padding-top: 0.5%;
@@ -36,21 +33,22 @@
     padding-left: 0;
     padding-right: 0;
   }
-
   #add_recipe_publish {
     border: 1px solid rgb(181, 223, 205);
     border-radius: 0.5em;
     display: flex;
-    justify-content:left;
     align-items: center;
+    justify-content: left;
     box-sizing: border-box;
     margin: 0.8em 0.4em 0.2em 0.4em;
     padding: 0.2em 0 0.2em 0;
+    height: 3em;
+    max-height: 5em;
     background-color:rgb(76, 203, 148);
   }
   #add_recipe_publish button {
     height: 2em;
-    max-height: 100%;
+    max-height: 2em;
     width: 6em;
     max-width: 100%;
     margin: 0.1em 0 0.1em 2em;
@@ -60,10 +58,11 @@
     background-color:rgb(245, 255, 250);
   }
   #add_recipe_publish p{
+    border: 1px solid red;
     height: 2em;
-    max-height: 100%;
-    width: 80em;
-    max-width: 100%;
+    max-height: 2em;
+    width: fit-content;
+    max-width: 95%;
     display: flex;
     justify-content: left;
     align-items: center;
@@ -71,7 +70,10 @@
     font-size: 80%;
   }
   #add_recipe_sides_main {
+    flex-wrap: wrap;
+    overflow-wrap: normal;
     display: flex;
+    height: 88%;
     max-width:100%;
     box-sizing: border-box;
     margin: 0;
@@ -81,26 +83,29 @@
     display: flex;
     flex: 3;
     flex-direction: column;
-    max-height: 100%;
     height: 98%;
+    min-width:23.8em;
+    width: 100%;
     max-width: 100%;
     box-sizing: border-box;
     margin-right: 0.1em;
     margin-top: 0.2em;
     margin-left: 0.2em;
     margin-right: 0.2em;
-    overflow: hidden;
+    overflow-x:hidden;
   }
   #add_recipe_title {        /* TITLE */
-    border: transparent;
+    border: 1px solid red;
     box-sizing: border-box;
     display: flex;
     justify-content:flex-start;
     height: 2em;
-    max-height: 100%;
+    max-height: 2em;
     margin-bottom: 0.2em;
     margin-top: 0.5em;
     width: 100%;
+    max-width: 100%;
+    margin-bottom: 0.3em;
   }   
   #add_recipe_title p {
     border: transparent;
@@ -108,37 +113,82 @@
     display: flex;
     margin: 0;
     padding: 0 0.3em 0 0.3em;
-    width: max-content;
+    width: 100%;
+    max-width: 100%;
     align-content: flex-start;
     justify-content: center;
-    height: 100%;
-    max-height: 100%;
+    height: 2em;
+    max-height: 2em;
     background-color:rgb(245, 255, 250);
+  }
+  #add_recipe_title_input {
+    width: 99%;
   }
   #add_recipe_title input {
     border: transparent;
     box-sizing: border-box;
     display: flex;
+    overflow: hidden;
     margin: 0;
-    width: 29em;
+    width:inherit;
+    max-width: 100%;
     align-content: flex-start;
     justify-content: center;
-    height: 100%;
-    max-height: 100%;
+    height: 2em;
+    max-height: 2em;
+    background-color: white;
+    max-width: 100%;
+    align-content: flex-start;
+    justify-content: center;
+    height: 2em;
+    max-height: 2em;
+    background-color: white;
+    max-width: 100%;
+    align-content: flex-start;
+    justify-content: center;
+    height: 2em;
+    max-height: 2em;
     margin-left: 0.2em;
     background-color: white;
   }
   #add_recipe_tags {        /* TAGS */
     border: transparent;
+    flex-wrap: wrap;
+    border-bottom: 1px solid rgb(245, 255, 250);
     box-sizing: border-box;
     display: flex;
     justify-content: flex-start;
+    height: fit-content;
+    max-height: 7em;
+    margin-bottom: 0.3em;
+  }
+  #add_recipe_tags_add {
+    display: flex;
+    margin-right: 0.3em;
+  }
+  #add_recipe_tags input {
+    border: transparent;
+    box-sizing: border-box;
     height: 2em;
-    max-height: 2em;
-    margin-bottom: 0.2em;
+    max-height: 100%;
+    margin: 0;
+    width: 8em;
+    max-width: 8em;
+    margin-left: 0.2em;
+    background-color: white;
+    margin-bottom: 0.3em;
+  }
+  #add_recipe_tags_each {
+    border: 1px solid red;
+    box-sizing: border-box;
+    display:contents;
+    flex-wrap: wrap;
+    height: 2em;
+    max-height: 6.6;
+    padding: 0 0.1em 0 0.1em;
+    margin: 0;
   }
   #add_recipe_tags p {
-    border: transparent;
     box-sizing: border-box;
     display: flex;
     margin: 0;
@@ -146,61 +196,34 @@
     margin: 0;
     padding: 0 0.3em 0 0.3em;
     align-content: flex-start;
-    height: 100%;
-    max-height: 100%;
+    height: 2em;
+    max-height: 2em;
     justify-content: center;
     background-color:rgb(245, 255, 250);
+    margin-bottom: 0.3em;
+    margin-right: 0.1em;
   }
-  #add_recipe_tags input {
-    border: transparent;
-    box-sizing: border-box;
-    height: 100%;
-    max-height: 100%;
-    margin: 0;
-    width: 8em;
-    max-width: 8em;
-    margin-left: 0.2em;
-    background-color: white;
-  }
-#add_recipe_tags_each {
-    border: transparent;
+  #add_recipe_time_servings_difficulty {    /* TIME + SERVINGS + DIFFICULTY */
+    flex-wrap: wrap;
+    border-bottom: 1px solid rgb(245, 255, 250);
+    margin-bottom: 0.3em;
     box-sizing: border-box;
     display: flex;
-    align-items: center;
-    height: 2em;
-    max-height: 2em;
-    padding: 0 0.1em 0 0.1em;
-    margin: 0;
+    justify-content:space-around;
+    min-width: 15em;
     width: 100%;
     max-width: 100%;
-}
-#add_recipe_tags_each p {
-    border: transparent;
-    box-sizing: border-box;
-    height: inherit;
-    max-height: 100%;
-    box-sizing: 100%;
-    padding: 0 0.3em 0 0.3em;
-    margin: 0 0em 0 0.2em;
-}
-  #add_recipe_time_servings_difficulty {    /* TIME + SERVINGS + DIFFICULTY */
-    border: transparent;
-    box-sizing: border-box;
-    display: flex;
-    justify-content: space-between;
-    width: 100%;
-    height: 2em;
-    max-height: 2em;
-    margin-bottom: 0.2em;
+    height: fit-content;
+    max-height: 6.9em;
   }
   #add_recipe_time {        /* TIME */
-    border: transparent;
     box-sizing: border-box;
     display: flex;
     justify-content: flex-start;
-    height: 100%;
-    max-height: 100%;
-    margin-bottom: 0.2em;
+    height: 2em;
+    max-height: 2em;
+    margin-bottom: 0.3em;
+    
     background-color:rgb(245, 255, 250);
   }
   #add_recipe_time_p1 {
@@ -211,8 +234,8 @@
     padding: 0 0.3em 0 0em;
     width: fit-content;
     align-items: center;
-    height: 100%;
-    max-height: 100%;
+    height: 2em;
+    max-height: 2em;
     justify-content: center;
     background-color:rgb(245, 255, 250);
   }
@@ -224,8 +247,8 @@
     padding: 0 0.3em 0 0em;
     width: fit-content;
     align-items: center;
-    height: 100%;
-    max-height: 100%;
+    height: 2em;
+    max-height: 2em;
     justify-content:flex-start;
     background-color:rgb(245, 255, 250);
   }
@@ -239,8 +262,8 @@
     align-items: center;
     justify-content:center;
     width: fit-content;
-    height: 100%;
-    max-height: 100%;
+    height: 2em;
+    max-height: 2em;
     background-color:rgb(245, 255, 250);
   }
   #add_recipe_time input {
@@ -253,8 +276,8 @@
     width: 2.5em;
     align-content: flex-start;
     justify-content: center;
-    height: 100%;
-    max-height: 100%;
+    height: 2em;
+    max-height: 2em;
     margin-left: 0.2em;
     margin-right: 0.2em;
     background-color: white;
@@ -264,9 +287,10 @@
     box-sizing: border-box;
     display: flex;
     align-items: center;
-    height: 100%;
-    max-height: 100%;
-    margin-bottom: 0.2em;
+    height: 2em;
+    max-height: 2em;
+    margin-bottom: 0.3em;
+    
     background-color:rgb(245, 255, 250);
   }
   #add_recipe_servings p {
@@ -276,8 +300,8 @@
     align-items: center;
     margin: 0;
     width: 5em;
-    height: 100%;
-    max-height: 100%;
+    height: 2em;
+    max-height: 2em;
     justify-content: center;
     background-color:rgb(245, 255, 250);
   }
@@ -290,18 +314,18 @@
     width: 2.5em;
     align-content: flex-start;
     justify-content: center;
-    height: 100%;
-    max-height: 100%;
+    height: 2em;
+    max-height: 2em;
     background-color: white;
   }
   #add_recipe_difficulty {     /* DIFFICULTY */
     border: transparent;
     box-sizing: border-box;
     display: flex;
-    justify-content: flex-start;
-    height: 100%;
-    max-height: 100%;
-    margin-bottom: 0.2em;
+    justify-content: space-around;
+    height: 2em;
+    max-height: 2em;
+    margin-bottom: 0.3em;
   }
   #add_recipe_difficulty p {
     border-right: 0.01em solid rgb(76, 203, 148);
@@ -313,8 +337,8 @@
     display: flex;
     margin: 0;
     width: 5em;
-    height: 100%;
-    max-height: 100%;
+    height: 2em;
+    max-height: 2em;
     justify-content: center;
     background-color:rgb(245, 255, 250);
   }
@@ -326,22 +350,23 @@
     max-width: 6em;
     align-content: flex-start;
     justify-content: center;
-    height: 100%;
-    max-height: 100%;
+    height: 2em;
+    max-height: 2em;
     background-color: white;
   }
   #add_recipe_ingredients {   /* INGREDIENTS */
-    border: transparent;
+    flex-wrap: wrap;
     box-sizing: border-box;
     display: flex;
     flex-direction: column;
     align-items: flex-start;
-    justify-content: space-between;
-    height: 4.2em;
-    max-height: 4.4em;
+    height: fit-content;
+    max-height: 9.4em;
+    min-width: 15em;
     width: 100%;
     max-width: 100%;
-    margin-bottom: 0.2em;
+    margin-bottom: 0.3em;
+    border-bottom: 1px solid rgb(245, 255, 250);
   }
   #add_recipe_ingredients_title {
     border: transparent;
@@ -354,21 +379,25 @@
     height: 2em;
     max-height: 2em;
     background-color:rgb(245, 255, 250);
+    margin-bottom: 0.3em;
   }
   #add_recipe_ingredients_options {
-    border: transparent;
+    flex-wrap: wrap;
+    border: transparent ;
     box-sizing: border-box;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
     align-items: center;
-    height: 2em;
-    max-height: 2em;
+    height: fit-content;
+    max-height: 10em;
     width: 100%;
   }
   #add_recipe_ingredients_ingredient{
     display: flex;
     height: 2em;
     max-height: 2em;
+    margin-bottom: 0.3em;
+    margin-right: 0.2em;
   }
   #add_recipe_ingredients_p1 {
     border: transparent;
@@ -383,8 +412,10 @@
   }
   #add_recipe_ingredients_amount {
     display: flex;
-    height: 100%;
-    max-height: 100%;
+    height: 2em;
+    max-height: 2em;
+    margin-bottom: 0.3em;
+    margin-right: 0.2em;
   }
   #add_recipe_ingredients_p2 {
     border: 1px transparent;
@@ -401,6 +432,8 @@
     display: flex;
     height: 2em;
     max-height: 2em;
+    margin-bottom: 0.3em;
+    margin-right: 0.2em;
   }
   #add_recipe_ingredients_p3 {
     border: transparent;
@@ -426,6 +459,7 @@
     height: 2em;
     max-height: 2em;
     background-color: white;
+    margin-bottom: 0.3em;
   }
   #add_recipe_ingredients_inp2 {
     border-top: transparent;
@@ -438,6 +472,7 @@
     height: 2em;
     max-height: 2em;
     background-color: white;
+    margin-bottom: 0.3em;
   }
   #add_recipe_ingredients select {
     border-top: transparent;
@@ -450,6 +485,7 @@
     height: 2em;
     max-height: 2em;
     background-color: white;
+    margin-bottom: 0.3em;
   }
   #add_recipe_ingredients button {
     display: flex;
@@ -460,19 +496,22 @@
     height: 2em;
     max-height: 2em;
     background-color:rgb(245, 255, 250);
+    margin-bottom: 0.3em;
   }
   #add_recipe_ingredients_rendering {   /* INGREDIENTS RENDERING */
+    flex-wrap: wrap;
+    box-sizing: border-box;
     border: transparent;
-    height: 22em;
+    height:18em;
     max-height: 22em;
     width: 100%;
     max-width: 100%;
-    overflow-y: scroll;
-    overflow-wrap: normal;
-    display: flex;
-    flex-direction: column;
     align-items: center;
     background-color:white;
+    overflow-y: auto;
+  }
+  #add_recipe_ingredients_rendering.show-scrollbar {
+    overflow-y: auto; /* Display scrollbar when needed */
   }
   #add_recipe_ingredients_rendering::-webkit-scrollbar-track {
     background: rgb(181, 223, 205);
@@ -486,6 +525,7 @@
   #add_recipe_ingredients_rendering p {
     border-radius: 1em;
     box-sizing: border-box;
+    width: inherit;
     max-width: 100%;
     height: 2em;
     max-height: 2em;
@@ -495,17 +535,19 @@
     padding: 0 0.5em 0 0.5em;
     text-align:center;
     background-color: white;
+    display: flex;
+    justify-content: center;
   }
   
-        /* -------------------  RIGHT SIDE */
+        /* -------------------  RIGHT SIDE -------------------- */
   #add_recipe_right {
-    border: 5px solid yellow;
+    border: 2px solid yellow;
     display: flex;
-    flex-wrap: wrap;
     flex: 4;
     flex-direction: column;
     max-height: 100%;
     height: 34.6em;
+    min-width:24em;
     width: 100%;
     max-width: 100%;
     box-sizing: border-box;
@@ -516,7 +558,7 @@
   }
   #add_recipe_options {       /* OPTIONS BOX */
     border: 1px solid blue;
-    display: flex;
+    flex-wrap: wrap;
     width: 63em;
     max-width: 100%;
     height: 6.4em;
@@ -524,7 +566,7 @@
   }
   #add_recipe_options_left {  /* BOX-LEFT */
     border: 1px solid red;
-    display: flex;
+    flex-wrap: wrap;
     flex: 1;
     flex-direction: column;
   }
@@ -597,6 +639,7 @@
     margin-left: 0.5em;
   }
   #add_recipe_options_right {    /* BOX-RIGHT */
+    flex-wrap: wrap;
     border: 1px solid ridge;
     display: flex;
     flex: 2;
@@ -623,7 +666,7 @@
   }
   #add_recipe_instructions {    /* INSTRUCTIONS */
     border: 1px solid blue;
-    display: flex;
+    flex-wrap: wrap;
     flex-direction: column;
     align-items:first baseline;
     width: 66.7em;

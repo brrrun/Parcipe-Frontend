@@ -120,17 +120,19 @@ function Add_Recipe() {
                                 </div>*/}
 
         <div    // PUBLISH & DRAFT Buttons
-            id="add_recipe_publish">
-            <div>
-                <button
-                    onClick={handleCreatedRecipe}>
-                    Publish
-                </button>
-            </div>
-            <div>
-                <button>
-                    Draft
-                </button>
+        >
+            <div id="add_recipe_publish">
+                <div>
+                    <button
+                        onClick={handleCreatedRecipe}>
+                        Publish
+                    </button>
+                </div>
+                <div>
+                    <button>
+                        Draft
+                    </button>
+                </div>
             </div>
             <div>
             <p>{errorMsg}</p>
@@ -147,7 +149,7 @@ function Add_Recipe() {
                 <div>
                     <p>Title:<span class="mandatory">*</span></p>
                 </div>
-                <div>
+                <div id="add_recipe_title_input">
                     <input 
                         type="text"
                         onChange={(e)=>{
@@ -160,27 +162,29 @@ function Add_Recipe() {
             </div>    
 
             <div            // Recipe TAGS
-                id="add_recipe_tags">
-                <div>
-                    <p>Tags:</p>
-                </div>
-                <div>
-                    <input 
-                        type="text" 
-                        onKeyDown={
-                            (e)=>{ if (e.key === "Enter" && e.target.value.length > 0 && newRecipe.tags.length <= 2) {
-                                    const newTag = e.target.value;
-                                    setNewRecipe((prevNewRecipe) => ({ ...prevNewRecipe, tags: [...prevNewRecipe.tags, newTag] }));
-                                    e.target.value = "";
+             id="add_recipe_tags">
+                <div id="add_recipe_tags_add">
+                    <div>
+                        <p>Tags:</p>
+                    </div>
+                    <div>
+                        <input 
+                            type="text" 
+                            onKeyDown={
+                                (e)=>{ if (e.key === "Enter" && e.target.value.length > 0 && newRecipe.tags.length <= 2) {
+                                        const newTag = e.target.value;
+                                        setNewRecipe((prevNewRecipe) => ({ ...prevNewRecipe, tags: [...prevNewRecipe.tags, newTag] }));
+                                        e.target.value = "";
+                                        }
+                                    else if (newRecipe.tags.length > 2){
+                                        setErrorMsg("You can only add up to 3 tags")
+                                        }
                                     }
-                                else if (newRecipe.tags.length > 2){
-                                    setErrorMsg("You can only add up to 3 tags")
-                                    }
-                                }
-                            } 
-                        placeholder={newRecipe.tags.length === 0 ? "Add a tag" : newRecipe.tags.length <= 2 ? "Add another?" : ""}/>
+                                } 
+                            placeholder={newRecipe.tags.length === 0 ? "Add a tag" : newRecipe.tags.length <= 2 ? "Add another?" : ""}/>
+                    </div>
                 </div>
-                <div>
+                
                     {newRecipe.tags.length > 0 ? (
                     <div id="add_recipe_tags_each">
                         {newRecipe.tags.map((tag, index) => (
@@ -192,7 +196,7 @@ function Add_Recipe() {
                         ) : (
                     ""
                 )}
-                </div>
+                
             </div>         
 
             <div            // Recipe TIME, SERVINGS & DIFFICULTY
